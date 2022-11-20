@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "ts:check": "tsc",
-    "codegen": "DEBUG=1 graphql-codegen --config codegen.yml",
+    "codegen": "graphql-codegen-esm --config codegen.yml",
     "download-schema": "get-graphql-schema https://swapi-graphql.netlify.app/.netlify/functions/index > schema.graphql",
     "prepare": "husky install"
   },
@@ -20,7 +20,8 @@
     "urql": "^3.0.3"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.13.7",
+    "@graphql-codegen/cli": "^2.13.12",
+    "@graphql-codegen/client-preset": "^1.1.4",
     "@graphql-codegen/typescript-operations": "^2.5.4",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",

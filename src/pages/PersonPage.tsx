@@ -24,6 +24,14 @@ const personQuery = gql`
         averageHeight
         name
       }
+      filmConnection {
+        edges {
+          node {
+            id
+            producers
+          }
+        }
+      }
     }
   }
 `;
@@ -54,7 +62,6 @@ const filmsQuery = gql`
             id
             title
             releaseDate
-            producers
             planetConnection {
               edges {
                 node {
@@ -96,7 +103,7 @@ const PersonPage = () => {
   const producers = useMemo(() => {
     const result: Record<string, number> = {};
 
-    filmsData?.person?.filmConnection?.edges
+    personData?.person?.filmConnection?.edges
       ?.flatMap((e) => e?.node?.producers)
       .forEach((p) => {
         if (p) {
@@ -105,7 +112,7 @@ const PersonPage = () => {
       });
 
     return result;
-  }, [filmsData]);
+  }, [personData]);
 
   return (
     <Layout>
